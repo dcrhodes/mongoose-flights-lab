@@ -1,0 +1,35 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/flights/index.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <table id="list">
+    <thead>
+      <tr>
+        <th>Flight #</th>
+        <th>Airline</th>
+        <th>Departure</th>
+        <th>Airport</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% flights.forEach((flight) => { %>
+      <tr>
+        <td><%= flight.flightNo %></td>
+        <td><%= flight.airline %></td>
+        <td><%= flight.departs %> </td>
+        <td><%= flight.airport %> </td>
+        <td><a href="/flights/<%= flight._id %>">DETAILS</a></td>
+        <td>
+          <form action="/flights/<%= flight._id %>?_method=DELETE" method="POST">
+            <button>X</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>

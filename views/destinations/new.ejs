@@ -1,0 +1,20 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/tickets/new.css" />
+<%- include('../partials/nav') %>
+
+<main>
+	<h1><%= title %></h1>
+  <p>Please add a destination if not included on the list below:</p>
+  <form id="add-destination-form" action="/destinations" method="POST">
+    <label for="airport">Destination</label>
+    <input type="text" name="airport" id="destination-input">
+    <button type="submit">Add Destination</button>
+  </form>
+  <ul>
+    <% destinations.forEach(function(destination) { %>
+      <li><%= destination.airport %></li>
+    <% }) %>
+  </ul>
+</main>
+
+<%- include('../partials/footer') %>

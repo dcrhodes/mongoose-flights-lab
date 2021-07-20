@@ -1,0 +1,54 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/flights/show.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <section>
+    <div>Airline: </div>
+    <div>
+      <%= flight.airline %>
+    </div>
+    <div>Flight #: </div>
+    <div><%= flight.flightNo %></div>
+    <div>Airport: </div>
+    <div><%= flight.airport %></div>
+    <div>Departure: </div>
+    <div><%= flight.departs %></div>
+    <div>Destinations: </div>
+    <div><% flight.destinations.forEach(d => { %>
+      <%= d.airport %> 
+    <% }); %> </div>
+    <br>
+    <div>
+      <form action="/flights/<%= flight._id %>/destinations" method="POST">
+        <select name="destinationId">
+          <%- destinations.map(p => 
+            `<option value="${p._id}">${p.airport}</option>`
+          ).join('') %>
+        </select>
+        <button type="submit">Add to Flight's Destinations</button>
+      </form>
+    </div>
+    
+    
+    
+    <div>Tickets:</div>
+    <div>
+      <% if (flight.tickets.length) { %>
+        <% flight.tickets.forEach(ticket => { %>
+            <div>Seat: <%= ticket.seat %></div> 
+            <div>Price: <%= ticket.price %></div>
+            <br>
+        <% }) %>
+      <% } else { %>
+        <h4>No Tickets are available for Flight <%= flight.flightNo %> </h4>
+        <% } %> 
+      
+      <a href="/flights/<%= flight._id %>/edit"><button>Add Ticket</button></a>
+    </div>
+  </section>
+</main>
+
+
+<%- include('../partials/footer') %>

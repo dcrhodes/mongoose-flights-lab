@@ -1,0 +1,16 @@
+</head>
+<body>
+  <nav>
+    <a 
+			href="/destinations/new"
+			<%- title === 'Add Destination' ? 'class="active"' : '' %>
+		>
+			ADD DESTINATION
+		</a>
+    <a 
+      href="/flights/new" <%- title === 'Add Flight' ? 'class="active"' : '' %>
+    >ADD FLIGHT</a>
+    <a 
+      href="/flights" <%- title === 'All Flights' ? 'class="active"' : '' %>
+    >ALL FLIGHTS</a>
+  </nav>

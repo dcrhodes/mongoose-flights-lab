@@ -1,0 +1,17 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/flights/edit.css" />
+<%- include('../partials/nav') %>
+
+<main>
+<main>
+  <h1><%= title %></h1>
+  <form id="new-form" action="/flights/<%= flight._id %>?_method=POST" method="POST">
+    <label for="title-input">Seat (A1 - F99):</label>
+    <input type="text" name="seat" required pattern="[A-F][1-9]\d?">
+    <label for="price-input">Price:</label>
+    <input type="number" name="price"  value="<%= flight.price %>">
+    <a href="/flights/<%= flight._id %>/edit"><button type="submit">Save Ticket</button></a>
+  </form>
+</main>
+
+<%- include("../partials/footer") %>
