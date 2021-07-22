@@ -9,6 +9,7 @@ export {
     edit,
     addTicket,
     addDestination,
+    deleteFlight as delete,
   }
 
 function newFlight(req, res) {
@@ -88,4 +89,10 @@ function show(req, res) {
         .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
+}
+
+function deleteFlight(req,res){
+  Flight.findByIdAndDelete(req.params.id, function(err, flight) {
+    res.redirect('/flights')
+  })
 }
